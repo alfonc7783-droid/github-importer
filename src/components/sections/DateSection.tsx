@@ -49,18 +49,21 @@ const DateSection = () => {
   return (
     <section id="date" className="py-20 px-4">
       <div className="container mx-auto max-w-4xl">
-        {/* White container with rounded corners for entire calendar section */}
+        {/* Section title - outside the card */}
+        <div className="flex items-center justify-center gap-3 mb-4">
+          <span className="text-2xl">✨</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground">
+            Дата свадьбы
+          </h2>
+          <span className="text-2xl">✨</span>
+        </div>
+        <p className="text-center text-muted-foreground mb-8">
+          Отметьте этот день в своём календаре
+        </p>
+
+        {/* White container with rounded corners for calendar section */}
         <Card className="max-w-lg mx-auto bg-white border-0 shadow-xl rounded-3xl overflow-hidden">
           <CardContent className="p-8">
-            {/* Section title */}
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <span className="text-2xl">✨</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground">
-                Дата свадьбы
-              </h2>
-              <span className="text-2xl">✨</span>
-            </div>
-            
             {/* Wedding date with calendar icon */}
             <div className="flex items-center justify-center gap-3 mb-8">
               <Calendar className="w-6 h-6 text-primary" />
