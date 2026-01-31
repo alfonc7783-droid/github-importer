@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { MapPin, Clock, Shirt, Gift, ArrowRight, Sparkles } from 'lucide-react';
+import { MapPin, Clock, Shirt, Gift, Sparkles } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import jerryDance from '@/assets/jerry-dance.gif';
 
@@ -57,7 +57,6 @@ const DetailsSection = () => {
                     <card.icon className={`w-6 h-6 ${card.iconColor}`} />
                   </div>
                   <h3 className="font-semibold text-foreground text-lg">{card.title}</h3>
-                  <ArrowRight className="w-4 h-4 text-muted-foreground" />
                 </CardContent>
               </Card>
             </Link>

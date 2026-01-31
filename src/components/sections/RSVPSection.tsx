@@ -56,7 +56,7 @@ const RSVPSection = () => {
           </h2>
         </div>
         <p className="text-center text-muted-foreground mb-8">
-          Пожалуйста, заполните анкету до 1 мая
+          Пожалуйста, заполните анкету<br />до 1 мая
         </p>
 
         <Card className="bg-card/50 backdrop-blur-sm border-primary/10">
