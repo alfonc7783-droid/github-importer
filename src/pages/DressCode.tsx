@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Shirt } from 'lucide-react';
 import Navigation from '@/components/Navigation';
@@ -32,6 +33,10 @@ const images = [
 
 const DressCode = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleBackClick = () => {
     navigate('/home');
