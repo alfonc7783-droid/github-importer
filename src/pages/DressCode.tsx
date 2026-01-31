@@ -6,7 +6,7 @@ import DiscoBall from '@/components/DiscoBall';
 import MusicPlayer from '@/components/MusicPlayer';
 import { Card, CardContent } from '@/components/ui/card';
 
-import dressCodeManSuit from '@/assets/dress-code-man-suit.jpg';
+import dressCodeMenStyles from '@/assets/dress-code-men-styles.jpg';
 import dressCodeWomenGroup from '@/assets/dress-code-women-group.jpg';
 import dressCodeManClassic from '@/assets/dress-code-man-classic.jpg';
 import dressCodeWomenPalette from '@/assets/dress-code-women-palette.jpg';
@@ -23,7 +23,7 @@ const colorPalette = [
 ];
 
 const images = [
-  { src: dressCodeManSuit, alt: 'Мужчина в классическом чёрном костюме' },
+  { src: dressCodeMenStyles, alt: 'Мужские образы в светлых тонах' },
   { src: dressCodeWomenGroup, alt: 'Девушки в платьях палитры мероприятия' },
   { src: dressCodeManClassic, alt: 'Мужчина в классическом образе' },
   { src: dressCodeWomenPalette, alt: 'Палитра нарядов для гостей' },
