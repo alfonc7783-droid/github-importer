@@ -56,6 +56,9 @@ interface Guest {
   name: string;
   guestCount: string;
   attending: 'yes' | 'no';
+  drinks: string[];
+  customDrink: string;
+  comment: string;
 }
 
 /**
@@ -85,7 +88,17 @@ const GuestsContext = createContext<GuestsContextType | undefined>(undefined);
 const loadGuests = (): Guest[] => {
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
-    return stored ? JSON.parse(stored) : [];
+    const parsed = stored ? JSON.parse(stored) : [];
+    if (!Array.isArray(parsed)) return [];
+    return parsed.map((guest) => ({
+      id: String(guest.id ?? Date.now()),
+      name: String(guest.name ?? ''),
+      guestCount: String(guest.guestCount ?? '1'),
+      attending: guest.attending === 'no' ? 'no' : 'yes',
+      drinks: Array.isArray(guest.drinks) ? guest.drinks : [],
+      customDrink: String(guest.customDrink ?? ''),
+      comment: String(guest.comment ?? ''),
+    }));
   } catch {
     console.error('Ошибка загрузки гостей из localStorage');
     return [];

@@ -44,6 +44,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { useToast } from '@/hooks/use-toast';
 import { ClipboardList, Check } from 'lucide-react';
 import { useGuests } from '@/contexts/GuestsContext';
+import { saveGuestResponse } from '@/lib/guestApi';
 
 // ═══════════════════════════════════════════════════════════════════════════
 // КОНФИГУРАЦИЯ
@@ -114,22 +115,46 @@ const RSVPSection = () => {
    * Обработчик отправки формы
    * Сохраняет гостя и показывает сообщение об успехе
    */
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Добавляем гостя через контекст (сохраняется в localStorage)
-    addGuest({
+
+    if (!formData.attending) {
+      toast({
+        title: "Уточните ответ",
+        description: "Пожалуйста, выберите «Да, приду» или «Не смогу».",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const guestPayload = {
       name: formData.name,
       guestCount: formData.guestCount || '1',
       attending: formData.attending as 'yes' | 'no',
-    });
-    
-    // Показываем сообщение об успехе
-    setIsSubmitted(true);
-    toast({
-      title: "Спасибо!",
-      description: "Ваш ответ сохранён ✨",
-    });
+      drinks: formData.drinks,
+      customDrink: formData.customDrink.trim(),
+      comment: formData.comment.trim(),
+    };
+
+    // Добавляем гостя через контекст (сохраняется в localStorage)
+    addGuest(guestPayload);
+
+    try {
+      await saveGuestResponse(guestPayload);
+      // Показываем сообщение об успехе
+      setIsSubmitted(true);
+      toast({
+        title: "Спасибо!",
+        description: "Ваш ответ сохранён ✨",
+      });
+    } catch (error) {
+      console.error(error);
+      toast({
+        title: "Не удалось отправить данные",
+        description: "Попробуйте позже или свяжитесь с организаторами.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
