@@ -1,5 +1,10 @@
+/**
+ * Секция для гостей
+ * Ссылка на Telegram-группу для общения гостей
+ */
 import { Send, Users } from 'lucide-react';
 
+/** Секция с Telegram-группой */
 const GuestsSection = () => {
   return (
     <section id="guests" className="py-20 px-4">

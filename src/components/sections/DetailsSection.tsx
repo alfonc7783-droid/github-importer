@@ -1,8 +1,13 @@
+/**
+ * Секция деталей свадьбы
+ * Навигационные карточки: место, расписание, дресс-код, подарки
+ */
 import { Link } from 'react-router-dom';
 import { MapPin, Clock, Shirt, Gift, Sparkles } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import jerryDance from '@/assets/jerry-dance.gif';
 
+/** Карточки с деталями мероприятия */
 const detailCards = [
   {
     icon: MapPin,
@@ -63,7 +68,7 @@ const DetailsSection = () => {
           ))}
         </div>
 
-        {/* Jerry dance GIF - moved below cards */}
+        {/* Анимация танца Jerry */}
         <div className="flex justify-center mt-12">
           <img 
             src={jerryDance} 

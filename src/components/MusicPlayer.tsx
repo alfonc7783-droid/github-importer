@@ -1,6 +1,11 @@
+/**
+ * Компонент управления музыкой
+ * Плавающая кнопка для включения/выключения фоновой музыки
+ */
 import { Music, Music2 } from 'lucide-react';
 import { useMusic } from '@/contexts/MusicContext';
 
+/** Кнопка управления музыкой с анимированными нотами */
 const MusicPlayer = () => {
   const { isPlaying, togglePlay } = useMusic();
 
@@ -13,7 +18,7 @@ const MusicPlayer = () => {
       {isPlaying ? (
         <>
           <Music2 className="w-6 h-6 text-primary animate-pulse" />
-          {/* Animated floating notes */}
+          {/* Анимированные плавающие ноты */}
           <span className="absolute animate-note-1 text-primary text-lg">♪</span>
           <span className="absolute animate-note-2 text-primary text-lg">♫</span>
           <span className="absolute animate-note-3 text-primary text-lg">♪</span>

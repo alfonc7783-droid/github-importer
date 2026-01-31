@@ -1,5 +1,10 @@
+/**
+ * Компонент навигации
+ * Фиксированное меню для перехода между секциями главной страницы
+ */
 import { useLocation, useNavigate } from 'react-router-dom';
 
+/** Элементы навигации */
 const navItems = [
   { label: 'Главная', section: 'hero' },
   { label: 'Детали', section: 'details' },
@@ -8,15 +13,17 @@ const navItems = [
   { label: 'Гости', section: 'guests' },
 ];
 
+/** Навигационная панель */
 const Navigation = () => {
   const location = useLocation();
   const navigate = useNavigate();
   
+  /** Обработчик клика по элементу навигации */
   const handleNavClick = (section: string) => {
-    // If not on home page, navigate to home first
+    // Если не на главной странице, сначала переходим туда
     if (location.pathname !== '/home') {
       navigate('/home');
-      // Wait for navigation, then scroll to section
+      // Ждём навигацию, затем скроллим к секции
       setTimeout(() => {
         const element = document.getElementById(section);
         if (element) {

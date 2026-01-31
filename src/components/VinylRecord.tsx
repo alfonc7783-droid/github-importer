@@ -1,17 +1,22 @@
+/**
+ * Компонент виниловой пластинки
+ * Интерактивный элемент на стартовом экране для входа в приглашение
+ */
 import { Heart } from 'lucide-react';
 
 interface VinylRecordProps {
-  onClick: () => void;
-  isSpinning?: boolean;
+  onClick: () => void;      // Обработчик клика
+  isSpinning?: boolean;     // Флаг вращения пластинки
 }
 
+/** Виниловая пластинка с анимацией вращения */
 const VinylRecord = ({ onClick, isSpinning = true }: VinylRecordProps) => {
   return (
     <button
       onClick={onClick}
       className="relative cursor-pointer transition-all duration-1000 z-10 hover:scale-105 focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0"
     >
-      {/* Main vinyl disc */}
+      {/* Основной диск пластинки */}
       <div
         className={`w-72 h-72 md:w-96 md:h-96 rounded-full relative ${isSpinning ? 'animate-spin-slow' : ''}`}
         style={{
@@ -22,7 +27,7 @@ const VinylRecord = ({ onClick, isSpinning = true }: VinylRecordProps) => {
           boxShadow: 'rgba(0, 0, 0, 0.4) 0px 15px 50px, rgba(0, 0, 0, 0.3) 0px 0px 30px inset',
         }}
       >
-        {/* Vinyl shine overlay */}
+        {/* Блик на пластинке */}
         <div
           className="absolute inset-0 rounded-full"
           style={{
@@ -30,7 +35,7 @@ const VinylRecord = ({ onClick, isSpinning = true }: VinylRecordProps) => {
           }}
         />
 
-        {/* Vinyl grooves */}
+        {/* Бороздки пластинки */}
         <div
           className="absolute inset-[15%] rounded-full"
           style={{
@@ -38,7 +43,7 @@ const VinylRecord = ({ onClick, isSpinning = true }: VinylRecordProps) => {
           }}
         />
 
-        {/* Gold center label */}
+        {/* Золотой центр с сердцем */}
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center animate-pulse-glow"
           style={{
@@ -53,7 +58,7 @@ const VinylRecord = ({ onClick, isSpinning = true }: VinylRecordProps) => {
           />
         </div>
 
-        {/* Center spindle hole */}
+        {/* Отверстие для шпинделя */}
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full"
           style={{
@@ -62,7 +67,7 @@ const VinylRecord = ({ onClick, isSpinning = true }: VinylRecordProps) => {
         />
       </div>
 
-      {/* Instruction text */}
+      {/* Инструкция */}
       <p className="absolute -bottom-16 left-1/2 -translate-x-1/2 text-foreground/80 text-lg font-sans whitespace-nowrap">
         Чтобы открыть приглашение
       </p>
