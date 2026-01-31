@@ -1,22 +1,38 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, MapPin } from 'lucide-react';
 import Navigation from '@/components/Navigation';
+import DiscoBall from '@/components/DiscoBall';
+import MusicPlayer from '@/components/MusicPlayer';
 import { Card, CardContent } from '@/components/ui/card';
 
 const Venue = () => {
+  const navigate = useNavigate();
+
+  const handleBackClick = () => {
+    navigate('/home');
+    setTimeout(() => {
+      const element = document.getElementById('details');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
+      <DiscoBall />
+      <MusicPlayer />
       
       <div className="pt-24 px-4 pb-12">
         <div className="container mx-auto max-w-4xl">
-          <Link 
-            to="/home#details" 
+          <button 
+            onClick={handleBackClick}
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8"
           >
             <ArrowLeft className="w-4 h-4" />
             Назад к деталям
-          </Link>
+          </button>
 
           <Card className="bg-card/50 backdrop-blur-sm border-primary/10">
             <CardContent className="p-8 text-center">
@@ -41,21 +57,27 @@ const Venue = () => {
                 Лесная усадьба в черте города, Ижевск, Удмуртская Республика
               </p>
 
-              {/* Map placeholder */}
-              <div className="w-full h-64 md:h-80 bg-muted rounded-lg flex items-center justify-center mb-4">
-                <div className="text-center">
-                  <MapPin className="w-12 h-12 text-primary mx-auto mb-2" />
-                  <p className="text-muted-foreground">Карта</p>
-                  <a 
-                    href="https://yandex.ru/maps/-/CHEezMqP"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary hover:underline text-sm"
-                  >
-                    Открыть в Яндекс Картах
-                  </a>
-                </div>
+              {/* Yandex Map embed */}
+              <div className="w-full h-64 md:h-96 rounded-lg overflow-hidden mb-4">
+                <iframe 
+                  src="https://yandex.ru/map-widget/v1/?ll=53.262605%2C56.898190&z=16&pt=53.262605,56.898190,pm2rdm"
+                  width="100%" 
+                  height="100%" 
+                  frameBorder="0"
+                  allowFullScreen
+                  title="Карта места проведения"
+                  style={{ border: 0 }}
+                />
               </div>
+              
+              <a 
+                href="https://yandex.ru/maps/?pt=53.262605,56.898190&z=16&l=map"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline text-sm"
+              >
+                Открыть в Яндекс Картах
+              </a>
             </CardContent>
           </Card>
         </div>

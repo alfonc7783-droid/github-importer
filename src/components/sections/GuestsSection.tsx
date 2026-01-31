@@ -1,6 +1,5 @@
 import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { ExternalLink } from 'lucide-react';
+import { Send } from 'lucide-react';
 
 const guests = [
   { name: 'Иван Петров', extra: '+1 гость' },
@@ -40,17 +39,15 @@ const GuestsSection = () => {
             <p className="text-sm text-muted-foreground mb-4">
               Делитесь фото и видео со свадьбы, задавайте вопросы
             </p>
-            <Button asChild variant="outline">
-              <a 
-                href="https://t.me/+6Kz1-1tr12wzNDYy" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2"
-              >
-                Присоединяйтесь!
-                <ExternalLink className="w-4 h-4" />
-              </a>
-            </Button>
+            <a 
+              href="https://t.me/+6Kz1-1tr12wzNDYy" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-[#0088cc] hover:bg-[#006699] transition-colors shadow-lg"
+              aria-label="Присоединиться к Telegram группе"
+            >
+              <Send className="w-6 h-6 text-white" />
+            </a>
           </CardContent>
         </Card>
       </div>
