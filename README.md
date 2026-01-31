@@ -1,73 +1,73 @@
-# Welcome to your Lovable project
+# 💍 Свадебное приглашение — Алексей и Мария
 
-## Project info
+Интерактивное свадебное приглашение с анимациями, музыкой и формой RSVP.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## ✨ Особенности
 
-## How can I edit this code?
+- 🎵 Музыкальное сопровождение с виниловой пластинкой на главном экране
+- 🪩 Анимированный диско-шар
+- 📅 Обратный отсчёт до даты свадьбы (3 июля 2026)
+- 📝 Интерактивная анкета гостя (RSVP)
+- 👗 Раздел с дресс-кодом
+- 🎁 Информация о подарках
+- 📍 Карта места проведения
+- 📱 Адаптивный дизайн для мобильных устройств
 
-There are several ways of editing your application.
+## 🛠 Технологии
 
-**Use Lovable**
+- **React** — UI библиотека
+- **TypeScript** — типизация
+- **Vite** — сборщик
+- **Tailwind CSS** — стилизация
+- **shadcn/ui** — компоненты интерфейса
+- **React Router** — маршрутизация
+- **Lucide React** — иконки
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## 📅 Дата свадьбы
 
-Changes made via Lovable will be committed automatically to this repo.
+**3 июля 2026 года**
 
-**Use your preferred IDE**
+## 📍 Место проведения
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+HolidayPark — Лесная усадьба в черте города, Ижевск, Удмуртская Республика
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🚀 Запуск проекта
 
-Follow these steps:
+```bash
+# Установка зависимостей
+npm install
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Запуск в режиме разработки
 npm run dev
+
+# Сборка для продакшена
+npm run build
 ```
 
-**Edit a file directly in GitHub**
+## 📁 Структура проекта
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```
+src/
+├── assets/          # Изображения и GIF-анимации
+├── components/      # React-компоненты
+│   ├── sections/    # Секции страницы
+│   └── ui/          # UI-компоненты (shadcn)
+├── contexts/        # React-контексты
+├── hooks/           # Кастомные хуки
+├── pages/           # Страницы приложения
+└── lib/             # Утилиты
+```
 
-**Use GitHub Codespaces**
+## 💒 Разделы сайта
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+1. **Главная** — Приглашение с именами молодожёнов
+2. **Детали** — Информация о месте и времени
+3. **Дата свадьбы** — Календарь и обратный отсчёт
+4. **Анкета гостя** — Форма RSVP
+5. **Дресс-код** — Рекомендации по одежде
+6. **Подарки** — Информация о подарках
+7. **Расписание** — Программа мероприятия
 
-## What technologies are used for this project?
+---
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+С любовью, Алексей и Мария 💕
