@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Gift, Wallet, Heart } from 'lucide-react';
 import Navigation from '@/components/Navigation';
@@ -7,6 +8,10 @@ import { Card, CardContent } from '@/components/ui/card';
 
 const Gifts = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleBackClick = () => {
     navigate('/home');

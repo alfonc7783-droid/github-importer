@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Clock, Users, Heart, Utensils, Music } from 'lucide-react';
 import Navigation from '@/components/Navigation';
@@ -14,6 +15,10 @@ const scheduleItems = [
 
 const Schedule = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleBackClick = () => {
     navigate('/home');
@@ -57,20 +62,22 @@ const Schedule = () => {
                 ⏰💕🎊
               </div>
 
-              <div className="space-y-4 w-full max-w-lg mx-auto">
+              <div className="space-y-4 w-full max-w-xl mx-auto">
                 {scheduleItems.map((item, index) => (
                   <Card key={index} className="bg-background/50 border-primary/10">
-                    <CardContent className="p-4 md:p-5 flex items-center justify-between gap-4">
-                      <div className="flex items-center gap-3 md:gap-4">
-                        <div className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                          <item.icon className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+                    <CardContent className="p-4 md:p-5">
+                      <div className="grid grid-cols-[40px_1fr_40px] md:grid-cols-[48px_1fr_48px] items-center gap-3 md:gap-4">
+                        <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                          <item.icon className="w-5 h-5 md:w-6 md:h-6 text-primary" />
                         </div>
                         <div className="text-left">
                           <span className="font-bold text-foreground text-base md:text-lg">{item.time}</span>
                           <span className="text-muted-foreground ml-2 md:ml-3 text-sm md:text-base">{item.title}</span>
                         </div>
+                        <div className="flex justify-center">
+                          <span className="text-xl md:text-2xl">{item.emoji}</span>
+                        </div>
                       </div>
-                      <span className="text-xl md:text-2xl flex-shrink-0">{item.emoji}</span>
                     </CardContent>
                   </Card>
                 ))}
