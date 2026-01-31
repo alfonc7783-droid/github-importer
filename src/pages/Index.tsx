@@ -1,29 +1,17 @@
 import { useState } from 'react';
 import VinylRecord from '@/components/VinylRecord';
 import SunburstBackground from '@/components/SunburstBackground';
-import WeddingInvitation from '@/components/WeddingInvitation';
+import { useNavigate } from 'react-router-dom';
 
 const Index = () => {
-  const [showInvitation, setShowInvitation] = useState(false);
+  const navigate = useNavigate();
 
   const handleVinylClick = () => {
-    setShowInvitation(true);
+    navigate('/home');
   };
-
-  const handleBack = () => {
-    setShowInvitation(false);
-  };
-
-  if (showInvitation) {
-    return <WeddingInvitation onBack={handleBack} />;
-  }
 
   return (
-    <div
-      className={`min-h-screen relative flex items-center justify-center overflow-hidden transition-opacity duration-1000 ${
-        showInvitation ? 'opacity-0' : 'opacity-100'
-      }`}
-    >
+    <div className="min-h-screen relative flex items-center justify-center overflow-hidden">
       <SunburstBackground />
       <VinylRecord onClick={handleVinylClick} />
     </div>

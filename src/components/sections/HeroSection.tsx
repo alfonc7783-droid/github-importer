@@ -1,0 +1,61 @@
+import discoBall from '@/assets/disco-ball.gif';
+import homerBride from '@/assets/homer-bride.gif';
+import { ChevronDown } from 'lucide-react';
+
+const HeroSection = () => {
+  const scrollToDetails = () => {
+    const element = document.getElementById('details');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <section id="hero" className="min-h-screen flex flex-col items-center justify-center relative pt-20">
+      {/* Disco ball */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2">
+        <img 
+          src={discoBall} 
+          alt="Disco ball" 
+          className="w-32 h-32 md:w-40 md:h-40 object-contain"
+        />
+      </div>
+
+      {/* Main content */}
+      <div className="text-center px-4 mt-16 md:mt-24">
+        <p className="text-muted-foreground text-xl md:text-2xl mb-6 font-light">
+          Приглашаем Вас на нашу свадьбу!
+        </p>
+        
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-foreground mb-4 flex items-center justify-center gap-4 flex-wrap">
+          <span>Алексей</span>
+          <span className="text-4xl md:text-5xl">💍</span>
+          <span>Мария</span>
+        </h1>
+        
+        <p className="text-2xl md:text-4xl text-muted-foreground mt-6 font-light">
+          3 июля 2026
+        </p>
+
+        {/* Homer GIF */}
+        <div className="mt-8">
+          <img 
+            src={homerBride} 
+            alt="Wedding animation" 
+            className="w-40 h-32 md:w-56 md:h-44 object-contain mx-auto rounded-lg"
+          />
+        </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <button 
+        onClick={scrollToDetails}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-muted-foreground hover:text-foreground transition-colors"
+      >
+        <ChevronDown className="w-8 h-8" />
+      </button>
+    </section>
+  );
+};
+
+export default HeroSection;

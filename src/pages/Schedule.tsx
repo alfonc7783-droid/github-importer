@@ -1,0 +1,74 @@
+import { Link } from 'react-router-dom';
+import { ArrowLeft, Clock, Users, Heart, Utensils, Music } from 'lucide-react';
+import Navigation from '@/components/Navigation';
+import { Card, CardContent } from '@/components/ui/card';
+
+const scheduleItems = [
+  { time: '15:45', title: 'Сбор гостей', emoji: '👋', icon: Users },
+  { time: '16:15', title: 'Церемония', emoji: '💍', icon: Heart },
+  { time: '17:00', title: 'Банкет', emoji: '🍽️', icon: Utensils },
+  { time: '22:00', title: 'Завершение вечера', emoji: '🎇', icon: Music },
+];
+
+const Schedule = () => {
+  return (
+    <div className="min-h-screen bg-background">
+      <Navigation />
+      
+      <div className="pt-24 px-4 pb-12">
+        <div className="container mx-auto max-w-4xl">
+          <Link 
+            to="/home#details" 
+            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Назад к деталям
+          </Link>
+
+          <Card className="bg-card/50 backdrop-blur-sm border-primary/10">
+            <CardContent className="p-8 text-center">
+              <div className="flex justify-center gap-2 text-primary mb-4">
+                <span>✿</span>
+                <Clock className="w-6 h-6" />
+                <span>✿</span>
+              </div>
+              
+              <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                Расписание дня
+              </h1>
+              
+              <div className="flex justify-center gap-2 text-2xl mb-8">
+                ⏰💕🎊
+              </div>
+
+              <div className="space-y-4 max-w-md mx-auto">
+                {scheduleItems.map((item, index) => (
+                  <Card key={index} className="bg-background/50 border-primary/10">
+                    <CardContent className="p-4 flex items-center justify-between">
+                      <div className="flex items-center gap-4">
+                        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                          <item.icon className="w-5 h-5 text-primary" />
+                        </div>
+                        <div className="text-left">
+                          <span className="font-bold text-foreground text-lg">{item.time}</span>
+                          <span className="text-muted-foreground ml-3">{item.title}</span>
+                        </div>
+                      </div>
+                      <span className="text-2xl">{item.emoji}</span>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+
+              <p className="mt-8 text-muted-foreground flex items-center justify-center gap-2">
+                🎉 Ждём вас! 🎉
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Schedule;
