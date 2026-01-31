@@ -1,5 +1,4 @@
-import { Link, useLocation } from 'react-router-dom';
-import discoBall from '@/assets/disco-ball.gif';
+import { useLocation } from 'react-router-dom';
 
 const navItems = [
   { label: 'Главная', href: '/home', section: 'hero' },
@@ -21,7 +20,7 @@ const Navigation = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm">
-      <div className="container mx-auto px-4 py-3 flex items-center justify-between">
+      <div className="container mx-auto px-4 py-3 flex items-center justify-center">
         <div className="flex items-center gap-8">
           {navItems.map((item) => (
             <button
@@ -33,11 +32,6 @@ const Navigation = () => {
             </button>
           ))}
         </div>
-        <img 
-          src={discoBall} 
-          alt="Disco ball" 
-          className="w-16 h-16 object-contain"
-        />
       </div>
     </nav>
   );

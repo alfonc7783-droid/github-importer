@@ -1,6 +1,6 @@
-import discoBall from '@/assets/disco-ball.gif';
 import homerBride from '@/assets/homer-bride.gif';
 import { ChevronDown } from 'lucide-react';
+import '@fontsource/marck-script';
 
 const HeroSection = () => {
   const scrollToDetails = () => {
@@ -11,19 +11,13 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="hero" className="min-h-screen flex flex-col items-center justify-center relative pt-20">
-      {/* Disco ball */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2">
-        <img 
-          src={discoBall} 
-          alt="Disco ball" 
-          className="w-32 h-32 md:w-40 md:h-40 object-contain"
-        />
-      </div>
-
+    <section id="hero" className="min-h-screen flex flex-col items-center justify-center relative pt-32">
       {/* Main content */}
       <div className="text-center px-4 mt-16 md:mt-24">
-        <p className="text-muted-foreground text-xl md:text-2xl mb-6 font-light">
+        <p 
+          className="text-muted-foreground text-2xl md:text-3xl mb-6"
+          style={{ fontFamily: "'Marck Script', cursive" }}
+        >
           Приглашаем Вас на нашу свадьбу!
         </p>
         
@@ -33,7 +27,10 @@ const HeroSection = () => {
           <span>Мария</span>
         </h1>
         
-        <p className="text-2xl md:text-4xl text-muted-foreground mt-6 font-light">
+        <p 
+          className="text-3xl md:text-5xl text-muted-foreground mt-6"
+          style={{ fontFamily: "'Marck Script', cursive" }}
+        >
           3 июля 2026
         </p>
 
