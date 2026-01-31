@@ -22,19 +22,19 @@ const DiscoBall = () => {
     >
       {/* String */}
       <div 
-        className="absolute left-1/2 -translate-x-1/2 -top-20 w-0.5 h-20"
+        className="absolute left-1/2 -translate-x-1/2 -top-32 w-0.5 h-32"
         style={{
-          background: 'linear-gradient(to bottom, transparent, #a1a1a1)',
+          background: 'linear-gradient(to bottom, transparent, #c0c0c0)',
         }}
       />
       
-      {/* Disco ball GIF */}
+      {/* Disco ball GIF - silver and 2x bigger */}
       <img 
         src={discoBallGif} 
         alt="Disco Ball" 
-        className="w-32 h-32 md:w-40 md:h-40 object-contain drop-shadow-2xl"
+        className="w-64 h-64 md:w-80 md:h-80 object-contain drop-shadow-2xl"
         style={{
-          filter: 'drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3))',
+          filter: 'drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3)) saturate(0) brightness(1.3)',
         }}
       />
       

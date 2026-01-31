@@ -1,35 +1,19 @@
 import { Card, CardContent } from '@/components/ui/card';
-import { Send } from 'lucide-react';
-
-const guests = [
-  { name: 'Иван Петров', extra: '+1 гость' },
-  { name: 'Анна Сидорова', extra: null },
-  { name: 'Елена Смирнова', extra: '+2 гостя' },
-];
+import { Send, Users } from 'lucide-react';
 
 const GuestsSection = () => {
   return (
     <section id="guests" className="py-20 px-4">
       <div className="container mx-auto max-w-lg">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground mb-4">
-          Наши гости
-        </h2>
-        <p className="text-center text-muted-foreground mb-8">
-          Придут: {guests.length + 3} гостей
-        </p>
-
-        <div className="space-y-3 mb-8">
-          {guests.map((guest, index) => (
-            <Card key={index} className="bg-card/50 backdrop-blur-sm border-primary/10">
-              <CardContent className="p-4 flex items-center justify-between">
-                <span className="text-foreground">{guest.name}</span>
-                {guest.extra && (
-                  <span className="text-sm text-muted-foreground">{guest.extra}</span>
-                )}
-              </CardContent>
-            </Card>
-          ))}
+        <div className="flex items-center justify-center gap-3 mb-4">
+          <Users className="w-8 h-8 text-primary" />
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground">
+            Наши гости
+          </h2>
         </div>
+        <p className="text-center text-muted-foreground mb-8">
+          Список гостей появится после заполнения анкеты
+        </p>
 
         <Card className="bg-gradient-to-r from-primary/20 to-accent/20 border-primary/20">
           <CardContent className="p-6 text-center">

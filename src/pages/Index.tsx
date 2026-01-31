@@ -2,13 +2,16 @@ import { useState } from 'react';
 import VinylRecord from '@/components/VinylRecord';
 import SunburstBackground from '@/components/SunburstBackground';
 import { useNavigate } from 'react-router-dom';
+import { useMusic } from '@/contexts/MusicContext';
 
 const Index = () => {
   const navigate = useNavigate();
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const { startPlaying } = useMusic();
 
   const handleVinylClick = () => {
     setIsTransitioning(true);
+    startPlaying(); // Start music when vinyl is clicked
     setTimeout(() => {
       navigate('/home');
     }, 500);

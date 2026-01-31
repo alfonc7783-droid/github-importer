@@ -42,13 +42,13 @@ const DetailsSection = () => {
   return (
     <section id="details" className="py-20 px-4">
       <div className="container mx-auto max-w-4xl">
-        <div className="flex justify-center gap-2 text-primary mb-2">
-          <span>✨</span>
+        <div className="flex items-center justify-center gap-3 mb-4">
+          <span className="text-2xl">✨</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground">
+            Детали
+          </h2>
+          <span className="text-2xl">✨</span>
         </div>
-        
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground mb-4">
-          Детали
-        </h2>
         <p className="text-center text-muted-foreground mb-12">
           Всё, что нужно знать о нашем празднике
         </p>
