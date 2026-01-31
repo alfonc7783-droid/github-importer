@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { MapPin, Clock, Shirt, Gift, ArrowRight } from 'lucide-react';
+import { MapPin, Clock, Shirt, Gift, ArrowRight, Sparkles } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import jerryDance from '@/assets/jerry-dance.gif';
 
@@ -43,11 +43,10 @@ const DetailsSection = () => {
     <section id="details" className="py-20 px-4">
       <div className="container mx-auto max-w-4xl">
         <div className="flex items-center justify-center gap-3 mb-4">
-          <span className="text-2xl">✨</span>
+          <Sparkles className="w-8 h-8 text-primary" />
           <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground">
             Детали
           </h2>
-          <span className="text-2xl">✨</span>
         </div>
         <p className="text-center text-muted-foreground mb-12">
           Всё, что нужно знать о нашем празднике

@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
 import { ClipboardList } from 'lucide-react';
 
@@ -20,6 +21,7 @@ const RSVPSection = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
+    guestCount: '',
     attending: '',
     drinks: [] as string[],
     customDrink: '',
@@ -41,7 +43,7 @@ const RSVPSection = () => {
       title: "Спасибо!",
       description: "Ваш ответ сохранён ✨",
     });
-    setFormData({ name: '', attending: '', drinks: [], customDrink: '', comment: '' });
+    setFormData({ name: '', guestCount: '', attending: '', drinks: [], customDrink: '', comment: '' });
   };
 
   return (
@@ -72,6 +74,28 @@ const RSVPSection = () => {
                   required
                   className="bg-background/50"
                 />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Количество гостей 👥
+                </label>
+                <Select
+                  value={formData.guestCount}
+                  onValueChange={(value) => setFormData({ ...formData, guestCount: value })}
+                >
+                  <SelectTrigger className="bg-background/50">
+                    <SelectValue placeholder="Выберите количество" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="1">1 гость</SelectItem>
+                    <SelectItem value="2">2 гостя</SelectItem>
+                    <SelectItem value="3">3 гостя</SelectItem>
+                    <SelectItem value="4">4 гостя</SelectItem>
+                    <SelectItem value="5">5 гостей</SelectItem>
+                    <SelectItem value="6+">6+ гостей</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
 
               <div>
