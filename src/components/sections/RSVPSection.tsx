@@ -5,13 +5,14 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
+import { ClipboardList } from 'lucide-react';
 
 const drinkOptions = [
   { id: 'red-wine', label: 'Вино красное 🍷' },
-  { id: 'white-wine', label: 'Вино белое 🥂' },
+  { id: 'white-wine', label: 'Вино белое 🍾' },
   { id: 'whiskey', label: 'Виски 🥃' },
-  { id: 'vodka', label: 'Водка' },
-  { id: 'champagne', label: 'Шампанское 🍾' },
+  { id: 'vodka', label: 'Водка 🍸' },
+  { id: 'champagne', label: 'Шампанское 🥂' },
   { id: 'non-alcoholic', label: 'Что-нибудь безалкогольное 🧃' },
 ];
 
@@ -46,9 +47,12 @@ const RSVPSection = () => {
   return (
     <section id="rsvp" className="py-20 px-4">
       <div className="container mx-auto max-w-lg">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground mb-4">
-          Анкета гостя
-        </h2>
+        <div className="flex items-center justify-center gap-3 mb-4">
+          <ClipboardList className="w-8 h-8 text-primary" />
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground">
+            Анкета гостя
+          </h2>
+        </div>
         <p className="text-center text-muted-foreground mb-8">
           Пожалуйста, заполните анкету до 1 мая
         </p>
@@ -94,56 +98,58 @@ const RSVPSection = () => {
                 </div>
               </div>
 
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-3">
-                  Предпочтения по напиткам 🍹
-                </label>
-                <p className="text-xs text-muted-foreground mb-3">
-                  Можно выбрать несколько вариантов
-                </p>
-                <div className="space-y-3">
-                  {drinkOptions.map((drink) => (
-                    <div key={drink.id} className="flex items-center space-x-3">
-                      <Checkbox
-                        id={drink.id}
-                        checked={formData.drinks.includes(drink.id)}
-                        onCheckedChange={(checked) => handleDrinkChange(drink.id, checked as boolean)}
-                      />
-                      <label
-                        htmlFor={drink.id}
-                        className="text-sm text-foreground cursor-pointer"
-                      >
-                        {drink.label}
-                      </label>
-                    </div>
-                  ))}
-                  
-                  <div className="flex items-start space-x-3 pt-2">
-                    <Checkbox
-                      id="custom-drink"
-                      checked={formData.drinks.includes('custom')}
-                      onCheckedChange={(checked) => handleDrinkChange('custom', checked as boolean)}
-                    />
-                    <div className="flex-1">
-                      <label
-                        htmlFor="custom-drink"
-                        className="text-sm text-foreground cursor-pointer"
-                      >
-                        Другое (вписать своё)
-                      </label>
-                      {formData.drinks.includes('custom') && (
-                        <Input
-                          type="text"
-                          value={formData.customDrink}
-                          onChange={(e) => setFormData({ ...formData, customDrink: e.target.value })}
-                          placeholder="Напишите ваш вариант"
-                          className="bg-background/50 mt-2"
+              {formData.attending === 'yes' && (
+                <div className="animate-in fade-in slide-in-from-top-2 duration-300">
+                  <label className="block text-sm font-medium text-foreground mb-3">
+                    Предпочтения по напиткам 🍹
+                  </label>
+                  <p className="text-xs text-muted-foreground mb-3">
+                    Можно выбрать несколько вариантов
+                  </p>
+                  <div className="space-y-3">
+                    {drinkOptions.map((drink) => (
+                      <div key={drink.id} className="flex items-center space-x-3">
+                        <Checkbox
+                          id={drink.id}
+                          checked={formData.drinks.includes(drink.id)}
+                          onCheckedChange={(checked) => handleDrinkChange(drink.id, checked as boolean)}
                         />
-                      )}
+                        <label
+                          htmlFor={drink.id}
+                          className="text-sm text-foreground cursor-pointer"
+                        >
+                          {drink.label}
+                        </label>
+                      </div>
+                    ))}
+                    
+                    <div className="flex items-start space-x-3 pt-2">
+                      <Checkbox
+                        id="custom-drink"
+                        checked={formData.drinks.includes('custom')}
+                        onCheckedChange={(checked) => handleDrinkChange('custom', checked as boolean)}
+                      />
+                      <div className="flex-1">
+                        <label
+                          htmlFor="custom-drink"
+                          className="text-sm text-foreground cursor-pointer"
+                        >
+                          Другое (вписать своё) ✏️
+                        </label>
+                        {formData.drinks.includes('custom') && (
+                          <Input
+                            type="text"
+                            value={formData.customDrink}
+                            onChange={(e) => setFormData({ ...formData, customDrink: e.target.value })}
+                            placeholder="Напишите ваш вариант"
+                            className="bg-background/50 mt-2"
+                          />
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              )}
 
               <div>
                 <label className="block text-sm font-medium text-foreground mb-2">

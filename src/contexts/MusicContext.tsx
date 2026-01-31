@@ -3,6 +3,7 @@ import { createContext, useContext, useState, useRef, useEffect, ReactNode } fro
 interface MusicContextType {
   isPlaying: boolean;
   togglePlay: () => void;
+  startPlaying: () => void;
 }
 
 const MusicContext = createContext<MusicContextType | null>(null);
@@ -52,8 +53,14 @@ export const MusicProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  const startPlaying = () => {
+    if (globalAudio && globalAudio.paused) {
+      globalAudio.play();
+    }
+  };
+
   return (
-    <MusicContext.Provider value={{ isPlaying, togglePlay }}>
+    <MusicContext.Provider value={{ isPlaying, togglePlay, startPlaying }}>
       {children}
     </MusicContext.Provider>
   );

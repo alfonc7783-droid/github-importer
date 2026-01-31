@@ -49,19 +49,20 @@ const DateSection = () => {
   return (
     <section id="date" className="py-20 px-4">
       <div className="container mx-auto max-w-4xl">
-        {/* Header with calendar icon */}
-        <div className="flex items-center justify-center gap-3 mb-8">
-          <Calendar className="w-8 h-8 text-primary" />
-          <h2 
-            className="text-3xl md:text-4xl text-foreground"
-            style={{ fontFamily: "'Marck Script', cursive" }}
-          >
-            3 июля 2026
-          </h2>
-        </div>
+        {/* White container with rounded corners for entire calendar section */}
+        <Card className="max-w-lg mx-auto bg-white border-0 shadow-xl rounded-3xl overflow-hidden">
+          <CardContent className="p-8">
+            {/* Header with calendar icon */}
+            <div className="flex items-center justify-center gap-3 mb-8">
+              <Calendar className="w-8 h-8 text-primary" />
+              <h2 
+                className="text-3xl md:text-4xl text-foreground"
+                style={{ fontFamily: "'Marck Script', cursive" }}
+              >
+                3 июля 2026
+              </h2>
+            </div>
 
-        <Card className="max-w-md mx-auto mb-12 bg-white/90 backdrop-blur-sm border border-border/50 shadow-lg">
-          <CardContent className="p-6">
             {/* Month navigation */}
             <div className="flex items-center justify-between mb-6">
               <button className="p-2 hover:bg-muted rounded-full transition-colors">
@@ -115,39 +116,42 @@ const DateSection = () => {
               <Heart className="w-5 h-5 fill-primary/20" strokeWidth={1.5} />
               <span className="text-sm">— День свадьбы 💕</span>
             </div>
+
+            {/* Divider */}
+            <div className="border-t border-border/30 my-8" />
+
+            {/* Countdown */}
+            <div className="text-center">
+              <p className="text-muted-foreground mb-6">До свадьбы осталось:</p>
+              <div className="flex justify-center gap-3 md:gap-4 flex-wrap">
+                <div className="bg-primary/10 rounded-2xl px-5 py-4 min-w-[80px]">
+                  <div className="text-3xl md:text-4xl font-bold text-primary">
+                    {timeLeft.days}
+                  </div>
+                  <div className="text-sm text-muted-foreground">дня</div>
+                </div>
+                <div className="bg-primary/10 rounded-2xl px-5 py-4 min-w-[80px]">
+                  <div className="text-3xl md:text-4xl font-bold text-primary">
+                    {timeLeft.hours}
+                  </div>
+                  <div className="text-sm text-muted-foreground">часов</div>
+                </div>
+                <div className="bg-primary/10 rounded-2xl px-5 py-4 min-w-[80px]">
+                  <div className="text-3xl md:text-4xl font-bold text-primary">
+                    {timeLeft.minutes}
+                  </div>
+                  <div className="text-sm text-muted-foreground">минут</div>
+                </div>
+                <div className="bg-primary/10 rounded-2xl px-5 py-4 min-w-[80px]">
+                  <div className="text-3xl md:text-4xl font-bold text-primary">
+                    {timeLeft.seconds}
+                  </div>
+                  <div className="text-sm text-muted-foreground">секунд</div>
+                </div>
+              </div>
+            </div>
           </CardContent>
         </Card>
-
-        {/* Countdown */}
-        <div className="text-center">
-          <p className="text-muted-foreground mb-6">До свадьбы осталось:</p>
-          <div className="flex justify-center gap-3 md:gap-4 flex-wrap">
-            <div className="bg-primary/10 rounded-2xl px-5 py-4 min-w-[80px]">
-              <div className="text-3xl md:text-4xl font-bold text-primary">
-                {timeLeft.days}
-              </div>
-              <div className="text-sm text-muted-foreground">дня</div>
-            </div>
-            <div className="bg-primary/10 rounded-2xl px-5 py-4 min-w-[80px]">
-              <div className="text-3xl md:text-4xl font-bold text-primary">
-                {timeLeft.hours}
-              </div>
-              <div className="text-sm text-muted-foreground">часов</div>
-            </div>
-            <div className="bg-primary/10 rounded-2xl px-5 py-4 min-w-[80px]">
-              <div className="text-3xl md:text-4xl font-bold text-primary">
-                {timeLeft.minutes}
-              </div>
-              <div className="text-sm text-muted-foreground">минут</div>
-            </div>
-            <div className="bg-primary/10 rounded-2xl px-5 py-4 min-w-[80px]">
-              <div className="text-3xl md:text-4xl font-bold text-primary">
-                {timeLeft.seconds}
-              </div>
-              <div className="text-sm text-muted-foreground">секунд</div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
