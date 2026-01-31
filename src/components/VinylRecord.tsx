@@ -9,7 +9,7 @@ const VinylRecord = ({ onClick, isSpinning = true }: VinylRecordProps) => {
   return (
     <button
       onClick={onClick}
-      className="relative cursor-pointer transition-all duration-1000 z-10 hover:scale-105 focus:outline-none"
+      className="relative cursor-pointer transition-all duration-1000 z-10 hover:scale-105 focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0"
     >
       {/* Main vinyl disc */}
       <div

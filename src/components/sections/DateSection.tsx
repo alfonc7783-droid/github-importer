@@ -52,15 +52,24 @@ const DateSection = () => {
         {/* White container with rounded corners for entire calendar section */}
         <Card className="max-w-lg mx-auto bg-white border-0 shadow-xl rounded-3xl overflow-hidden">
           <CardContent className="p-8">
-            {/* Header with calendar icon */}
+            {/* Section title */}
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <span className="text-2xl">✨</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground">
+                Дата свадьбы
+              </h2>
+              <span className="text-2xl">✨</span>
+            </div>
+            
+            {/* Wedding date with calendar icon */}
             <div className="flex items-center justify-center gap-3 mb-8">
-              <Calendar className="w-8 h-8 text-primary" />
-              <h2 
-                className="text-3xl md:text-4xl text-foreground"
+              <Calendar className="w-6 h-6 text-primary" />
+              <p 
+                className="text-2xl md:text-3xl text-foreground"
                 style={{ fontFamily: "'Marck Script', cursive" }}
               >
                 3 июля 2026
-              </h2>
+              </p>
             </div>
 
             {/* Month navigation */}

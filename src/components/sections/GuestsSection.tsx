@@ -1,4 +1,3 @@
-import { Card, CardContent } from '@/components/ui/card';
 import { Send, Users } from 'lucide-react';
 
 const GuestsSection = () => {
@@ -15,25 +14,23 @@ const GuestsSection = () => {
           Список гостей появится после заполнения анкеты
         </p>
 
-        <Card className="bg-gradient-to-r from-primary/20 to-accent/20 border-primary/20">
-          <CardContent className="p-6 text-center">
-            <h3 className="font-semibold text-foreground mb-2">
-              Telegram-группа для гостей
-            </h3>
-            <p className="text-sm text-muted-foreground mb-4">
-              Делитесь фото и видео со свадьбы, задавайте вопросы
-            </p>
-            <a 
-              href="https://t.me/+6Kz1-1tr12wzNDYy" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-[#0088cc] hover:bg-[#006699] transition-colors shadow-lg"
-              aria-label="Присоединиться к Telegram группе"
-            >
-              <Send className="w-6 h-6 text-white" />
-            </a>
-          </CardContent>
-        </Card>
+        <div className="text-center">
+          <a 
+            href="https://t.me/+6Kz1-1tr12wzNDYy" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[#0088cc] hover:bg-[#006699] transition-colors shadow-lg mb-4"
+            aria-label="Присоединиться к Telegram группе"
+          >
+            <Send className="w-9 h-9 text-white" />
+          </a>
+          <h3 className="font-semibold text-foreground mb-2">
+            Telegram-группа для гостей
+          </h3>
+          <p className="text-sm text-muted-foreground">
+            Делитесь фото и видео со свадьбы, задавайте вопросы
+          </p>
+        </div>
       </div>
     </section>
   );
