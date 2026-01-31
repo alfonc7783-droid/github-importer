@@ -3,15 +3,36 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
+
+const drinkOptions = [
+  { id: 'red-wine', label: 'Вино красное 🍷' },
+  { id: 'white-wine', label: 'Вино белое 🥂' },
+  { id: 'whiskey', label: 'Виски 🥃' },
+  { id: 'vodka', label: 'Водка' },
+  { id: 'champagne', label: 'Шампанское 🍾' },
+  { id: 'non-alcoholic', label: 'Что-нибудь безалкогольное 🧃' },
+];
 
 const RSVPSection = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
     attending: '',
+    drinks: [] as string[],
+    customDrink: '',
     comment: '',
   });
+
+  const handleDrinkChange = (drinkId: string, checked: boolean) => {
+    setFormData(prev => ({
+      ...prev,
+      drinks: checked 
+        ? [...prev.drinks, drinkId]
+        : prev.drinks.filter(d => d !== drinkId)
+    }));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -19,7 +40,7 @@ const RSVPSection = () => {
       title: "Спасибо!",
       description: "Ваш ответ сохранён ✨",
     });
-    setFormData({ name: '', attending: '', comment: '' });
+    setFormData({ name: '', attending: '', drinks: [], customDrink: '', comment: '' });
   };
 
   return (
@@ -70,6 +91,57 @@ const RSVPSection = () => {
                   >
                     Не смогу
                   </Button>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-3">
+                  Предпочтения по напиткам 🍹
+                </label>
+                <p className="text-xs text-muted-foreground mb-3">
+                  Можно выбрать несколько вариантов
+                </p>
+                <div className="space-y-3">
+                  {drinkOptions.map((drink) => (
+                    <div key={drink.id} className="flex items-center space-x-3">
+                      <Checkbox
+                        id={drink.id}
+                        checked={formData.drinks.includes(drink.id)}
+                        onCheckedChange={(checked) => handleDrinkChange(drink.id, checked as boolean)}
+                      />
+                      <label
+                        htmlFor={drink.id}
+                        className="text-sm text-foreground cursor-pointer"
+                      >
+                        {drink.label}
+                      </label>
+                    </div>
+                  ))}
+                  
+                  <div className="flex items-start space-x-3 pt-2">
+                    <Checkbox
+                      id="custom-drink"
+                      checked={formData.drinks.includes('custom')}
+                      onCheckedChange={(checked) => handleDrinkChange('custom', checked as boolean)}
+                    />
+                    <div className="flex-1">
+                      <label
+                        htmlFor="custom-drink"
+                        className="text-sm text-foreground cursor-pointer"
+                      >
+                        Другое (вписать своё)
+                      </label>
+                      {formData.drinks.includes('custom') && (
+                        <Input
+                          type="text"
+                          value={formData.customDrink}
+                          onChange={(e) => setFormData({ ...formData, customDrink: e.target.value })}
+                          placeholder="Напишите ваш вариант"
+                          className="bg-background/50 mt-2"
+                        />
+                      )}
+                    </div>
+                  </div>
                 </div>
               </div>
 
