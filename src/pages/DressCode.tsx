@@ -1,3 +1,7 @@
+/**
+ * Страница дресс-кода
+ * Палитра цветов и примеры нарядов для гостей
+ */
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Shirt } from 'lucide-react';
@@ -6,12 +10,15 @@ import DiscoBall from '@/components/DiscoBall';
 import MusicPlayer from '@/components/MusicPlayer';
 import { Card, CardContent } from '@/components/ui/card';
 
+// Изображения примеров нарядов
 import dressCodeMenStyles from '@/assets/dress-code-men-styles.jpg';
 import dressCodeWomenGroup from '@/assets/dress-code-women-group.jpg';
 import dressCodeManClassic from '@/assets/dress-code-man-classic.jpg';
 import dressCodeWomenPalette from '@/assets/dress-code-women-palette.jpg';
 import dressCodeWomanPink from '@/assets/dress-code-woman-pink.jpg';
 import dressCodeWomanBlue from '@/assets/dress-code-woman-blue.jpg';
+
+/** Цветовая палитра дресс-кода */
 
 const colorPalette = [
   { color: 'hsl(350, 60%, 65%)', name: 'Розовый' },

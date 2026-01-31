@@ -1,9 +1,15 @@
+/**
+ * Главный компонент приложения — Свадебное приглашение
+ * Алексей и Мария — 3 июля 2026
+ */
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { MusicProvider } from "./contexts/MusicContext";
+
+// Страницы приложения
 import Index from "./pages/Index";
 import Home from "./pages/Home";
 import Venue from "./pages/Venue";
@@ -12,6 +18,7 @@ import DressCode from "./pages/DressCode";
 import Gifts from "./pages/Gifts";
 import NotFound from "./pages/NotFound";
 
+// Клиент для React Query (кэширование данных)
 const queryClient = new QueryClient();
 
 const App = () => (

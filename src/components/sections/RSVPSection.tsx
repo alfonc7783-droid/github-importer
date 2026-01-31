@@ -1,3 +1,7 @@
+/**
+ * Секция анкеты гостя (RSVP)
+ * Форма для подтверждения участия и выбора напитков
+ */
 import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -8,6 +12,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { useToast } from '@/hooks/use-toast';
 import { ClipboardList } from 'lucide-react';
 
+/** Варианты напитков для выбора */
 const drinkOptions = [
   { id: 'red-wine', label: 'Вино красное 🍷' },
   { id: 'white-wine', label: 'Вино белое 🍾' },

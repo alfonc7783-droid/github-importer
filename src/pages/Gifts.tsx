@@ -1,3 +1,7 @@
+/**
+ * Страница информации о подарках
+ * Рекомендации для гостей по подаркам
+ */
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Gift, Wallet, Heart } from 'lucide-react';

@@ -1,5 +1,9 @@
+/**
+ * Страница места проведения свадьбы
+ * HolidayPark — Лесная усадьба, Ижевск
+ */
 import { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, MapPin } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import DiscoBall from '@/components/DiscoBall';

@@ -1,3 +1,7 @@
+/**
+ * Страница расписания свадебного дня
+ * Программа мероприятия с временем и описанием
+ */
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Clock, Users, Heart, Utensils, Music } from 'lucide-react';
@@ -5,6 +9,8 @@ import Navigation from '@/components/Navigation';
 import DiscoBall from '@/components/DiscoBall';
 import MusicPlayer from '@/components/MusicPlayer';
 import { Card, CardContent } from '@/components/ui/card';
+
+/** Элементы расписания дня */
 
 const scheduleItems = [
   { time: '15:45', title: 'Сбор гостей', icon: Users },

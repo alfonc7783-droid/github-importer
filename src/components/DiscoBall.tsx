@@ -1,6 +1,11 @@
+/**
+ * Компонент диско-шара
+ * Анимированный декоративный элемент с эффектом параллакса при прокрутке
+ */
 import { useEffect, useState } from 'react';
 import discoBallGif from '@/assets/disco-ball.gif';
 
+/** Диско-шар с эффектом параллакса */
 const DiscoBall = () => {
   const [scrollY, setScrollY] = useState(0);
 
@@ -20,7 +25,7 @@ const DiscoBall = () => {
         top: `${Math.min(scrollY * 0.3, 100) - 40}px`,
       }}
     >
-      {/* String */}
+      {/* Нить подвеса */}
       <div 
         className="absolute left-1/2 -translate-x-1/2 -top-32 w-0.5 h-32"
         style={{
@@ -28,17 +33,17 @@ const DiscoBall = () => {
         }}
       />
       
-      {/* Disco ball GIF - silver and 2x bigger */}
+      {/* Диско-шар */}
       <img 
         src={discoBallGif} 
-        alt="Disco Ball" 
+        alt="Диско-шар" 
         className="w-64 h-64 md:w-80 md:h-80 object-contain drop-shadow-2xl"
         style={{
           filter: 'drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3)) saturate(0) brightness(1.3)',
         }}
       />
       
-      {/* Light rays/reflections */}
+      {/* Лучи света */}
       <div className="absolute inset-0 pointer-events-none">
         {[...Array(8)].map((_, i) => (
           <div
