@@ -10,7 +10,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
-import { ClipboardList, CheckCircle } from 'lucide-react';
+import { ClipboardList, Check } from 'lucide-react';
 
 /** Варианты напитков для выбора */
 const drinkOptions = [
@@ -69,7 +69,7 @@ const RSVPSection = () => {
           <CardContent className="p-6">
             {isSubmitted ? (
               <div className="flex flex-col items-center justify-center py-16 animate-in fade-in zoom-in duration-500">
-                <CheckCircle className="w-24 h-24 text-green-500 mb-6" />
+                <Check className="w-24 h-24 text-green-500 mb-6" strokeWidth={3} />
                 <h3 className="text-2xl font-bold text-foreground mb-2">Спасибо!</h3>
                 <p className="text-muted-foreground text-center">
                   Ваш ответ успешно отправлен ✨
