@@ -7,7 +7,6 @@ const detailCards = [
   {
     icon: MapPin,
     title: 'Место',
-    description: 'HolidayPark',
     href: '/venue',
     iconBg: 'bg-primary/10',
     iconColor: 'text-primary',
@@ -15,7 +14,6 @@ const detailCards = [
   {
     icon: Clock,
     title: 'Расписание',
-    description: 'План мероприятий на день',
     href: '/schedule',
     iconBg: 'bg-primary/10',
     iconColor: 'text-primary',
@@ -23,7 +21,6 @@ const detailCards = [
   {
     icon: Shirt,
     title: 'Дресс-код',
-    description: 'Рекомендации по одежде',
     href: '/dress-code',
     iconBg: 'bg-primary/10',
     iconColor: 'text-primary',
@@ -31,7 +28,6 @@ const detailCards = [
   {
     icon: Gift,
     title: 'Подарки',
-    description: 'Информация о подарках',
     href: '/gifts',
     iconBg: 'bg-primary/10',
     iconColor: 'text-primary',
@@ -60,11 +56,8 @@ const DetailsSection = () => {
                   <div className={`w-14 h-14 rounded-full ${card.iconBg} flex items-center justify-center`}>
                     <card.icon className={`w-6 h-6 ${card.iconColor}`} />
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-foreground text-lg mb-1">{card.title}</h3>
-                    <p className="text-sm text-muted-foreground">{card.description}</p>
-                  </div>
-                  <ArrowRight className="w-4 h-4 text-muted-foreground mt-2" />
+                  <h3 className="font-semibold text-foreground text-lg">{card.title}</h3>
+                  <ArrowRight className="w-4 h-4 text-muted-foreground" />
                 </CardContent>
               </Card>
             </Link>
