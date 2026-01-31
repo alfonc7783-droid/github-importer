@@ -44,7 +44,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { useToast } from '@/hooks/use-toast';
 import { ClipboardList, Check } from 'lucide-react';
 import { useGuests } from '@/contexts/GuestsContext';
-import { saveGuestResponse } from '@/lib/guestApi';
+import { saveGuestResponse, type GuestResponsePayload } from '@/lib/guestApi';
 
 // ═══════════════════════════════════════════════════════════════════════════
 // КОНФИГУРАЦИЯ
@@ -127,7 +127,7 @@ const RSVPSection = () => {
       return;
     }
 
-    const guestPayload = {
+    const guestPayload: GuestResponsePayload = {
       name: formData.name,
       guestCount: formData.guestCount || '1',
       attending: formData.attending as 'yes' | 'no',
@@ -139,19 +139,20 @@ const RSVPSection = () => {
     // Добавляем гостя через контекст (сохраняется в localStorage)
     addGuest(guestPayload);
 
+    // Показываем сообщение об успехе (локально данные сохранены)
+    setIsSubmitted(true);
+    toast({
+      title: "Спасибо!",
+      description: "Ваш ответ сохранён ✨",
+    });
+
     try {
       await saveGuestResponse(guestPayload);
-      // Показываем сообщение об успехе
-      setIsSubmitted(true);
-      toast({
-        title: "Спасибо!",
-        description: "Ваш ответ сохранён ✨",
-      });
     } catch (error) {
       console.error(error);
       toast({
         title: "Не удалось отправить данные",
-        description: "Попробуйте позже или свяжитесь с организаторами.",
+        description: "Локально данные сохранены, но отправка не удалась.",
         variant: "destructive",
       });
     }

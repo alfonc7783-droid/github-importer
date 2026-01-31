@@ -1,4 +1,4 @@
-interface GuestResponsePayload {
+export interface GuestResponsePayload {
   name: string;
   guestCount: string;
   attending: 'yes' | 'no';
