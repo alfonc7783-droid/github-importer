@@ -116,12 +116,24 @@ const RSVPSection = () => {
    */
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!formData.attending) {
+      toast({
+        title: "Уточните ответ",
+        description: "Пожалуйста, выберите «Да, приду» или «Не смогу».",
+        variant: "destructive",
+      });
+      return;
+    }
     
     // Добавляем гостя через контекст (сохраняется в localStorage)
     addGuest({
       name: formData.name,
       guestCount: formData.guestCount || '1',
       attending: formData.attending as 'yes' | 'no',
+      drinks: formData.drinks,
+      customDrink: formData.customDrink.trim(),
+      comment: formData.comment.trim(),
     });
     
     // Показываем сообщение об успехе
