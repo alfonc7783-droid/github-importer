@@ -1,12 +1,31 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from 'react';
+import VinylRecord from '@/components/VinylRecord';
+import SunburstBackground from '@/components/SunburstBackground';
+import WeddingInvitation from '@/components/WeddingInvitation';
 
 const Index = () => {
+  const [showInvitation, setShowInvitation] = useState(false);
+
+  const handleVinylClick = () => {
+    setShowInvitation(true);
+  };
+
+  const handleBack = () => {
+    setShowInvitation(false);
+  };
+
+  if (showInvitation) {
+    return <WeddingInvitation onBack={handleBack} />;
+  }
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div
+      className={`min-h-screen relative flex items-center justify-center overflow-hidden transition-opacity duration-1000 ${
+        showInvitation ? 'opacity-0' : 'opacity-100'
+      }`}
+    >
+      <SunburstBackground />
+      <VinylRecord onClick={handleVinylClick} />
     </div>
   );
 };
