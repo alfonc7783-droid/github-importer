@@ -11,6 +11,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
 import { ClipboardList, Check } from 'lucide-react';
+import { useGuests } from '@/contexts/GuestsContext';
 
 /** Варианты напитков для выбора */
 const drinkOptions = [
@@ -24,6 +25,7 @@ const drinkOptions = [
 
 const RSVPSection = () => {
   const { toast } = useToast();
+  const { addGuest } = useGuests();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -45,6 +47,14 @@ const RSVPSection = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Добавляем гостя в список
+    addGuest({
+      name: formData.name,
+      guestCount: formData.guestCount || '1',
+      attending: formData.attending as 'yes' | 'no',
+    });
+    
     setIsSubmitted(true);
     toast({
       title: "Спасибо!",
