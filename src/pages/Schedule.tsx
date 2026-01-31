@@ -60,17 +60,17 @@ const Schedule = () => {
               <div className="space-y-4 max-w-md mx-auto">
                 {scheduleItems.map((item, index) => (
                   <Card key={index} className="bg-background/50 border-primary/10">
-                    <CardContent className="p-4 flex items-center justify-between">
-                      <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                          <item.icon className="w-5 h-5 text-primary" />
-                        </div>
-                        <div className="text-left">
-                          <span className="font-bold text-foreground text-lg">{item.time}</span>
-                          <span className="text-muted-foreground ml-3">{item.title}</span>
-                        </div>
+                    <CardContent className="p-4 flex items-center gap-3 md:gap-4">
+                      <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                        <item.icon className="w-4 h-4 md:w-5 md:h-5 text-primary" />
                       </div>
-                      <span className="text-2xl">{item.emoji}</span>
+                      <div className="flex-1 min-w-0 text-left">
+                        <span className="font-bold text-foreground text-base md:text-lg">{item.time}</span>
+                        <span className="text-muted-foreground ml-2 md:ml-3 text-sm md:text-base">{item.title}</span>
+                      </div>
+                      <div className="w-8 flex-shrink-0 flex justify-center">
+                        <span className="text-xl md:text-2xl">{item.emoji}</span>
+                      </div>
                     </CardContent>
                   </Card>
                 ))}
