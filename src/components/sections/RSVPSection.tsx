@@ -2,10 +2,10 @@
  * =============================================================================
  * СЕКЦИЯ RSVP — АНКЕТА ГОСТЯ
  * =============================================================================
- * 
+ *
  * Файл: src/components/sections/RSVPSection.tsx
  * Описание: Форма для подтверждения участия и выбора напитков
- * 
+ *
  * ПОЛЯ ФОРМЫ:
  * ───────────
  * 1. Имя гостя (обязательно)
@@ -20,31 +20,37 @@
  *    - Безалкогольное 🧃
  *    - Другое (с текстовым полем)
  * 5. Комментарий (опционально)
- * 
+ *
  * ПОСЛЕ ОТПРАВКИ:
  * ───────────────
  * - Форма заменяется на сообщение "Спасибо!"
  * - Данные сохраняются через GuestsContext (в localStorage)
  * - Показывается toast-уведомление
- * 
+ *
  * ДЕДЛАЙН:
  * ────────
  * До 1 мая (указано в подзаголовке)
- * 
+ *
  * @see src/contexts/GuestsContext.tsx - Сохранение данных
  * @see src/components/sections/GuestsSection.tsx - Отображение списка
  */
-import { useState } from 'react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { useToast } from '@/hooks/use-toast';
-import { ClipboardList, Check } from 'lucide-react';
-import { useGuests } from '@/contexts/GuestsContext';
-import { saveGuestResponse, type GuestResponsePayload } from '@/lib/guestApi';
+import { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { useToast } from "@/hooks/use-toast";
+import { ClipboardList, Check } from "lucide-react";
+import { useGuests } from "@/contexts/GuestsContext";
+import { saveGuestResponse, type GuestResponsePayload } from "@/lib/guestApi";
 
 // ═══════════════════════════════════════════════════════════════════════════
 // КОНФИГУРАЦИЯ
@@ -56,12 +62,12 @@ import { saveGuestResponse, type GuestResponsePayload } from '@/lib/guestApi';
  * @property label - Отображаемый текст с эмодзи
  */
 const drinkOptions = [
-  { id: 'red-wine', label: 'Вино красное 🍷' },
-  { id: 'white-wine', label: 'Вино белое 🍾' },
-  { id: 'whiskey', label: 'Виски 🥃' },
-  { id: 'vodka', label: 'Водка 🍸' },
-  { id: 'champagne', label: 'Шампанское 🥂' },
-  { id: 'non-alcoholic', label: 'Что-нибудь безалкогольное 🧃' },
+  { id: "red-wine", label: "Вино красное 🍷" },
+  { id: "white-wine", label: "Вино белое 🍾" },
+  { id: "whiskey", label: "Виски 🥃" },
+  { id: "vodka", label: "Водка 🍸" },
+  { id: "champagne", label: "Шампанское 🥂" },
+  { id: "non-alcoholic", label: "Что-нибудь безалкогольное 🧃" },
 ];
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -75,26 +81,26 @@ const drinkOptions = [
 const RSVPSection = () => {
   const { toast } = useToast();
   const { addGuest } = useGuests();
-  
+
   /** Флаг успешной отправки формы */
   const [isSubmitted, setIsSubmitted] = useState(false);
-  
+
   /**
    * Состояние формы
    * @property name - Имя гостя
-   * @property guestCount - Количество человек
+   * @property guestCount - Количество человек (строкой, например "1" или "6+")
    * @property attending - Придёт ли гость ('yes' | 'no' | '')
    * @property drinks - Массив выбранных напитков
    * @property customDrink - Свой вариант напитка
    * @property comment - Комментарий
    */
   const [formData, setFormData] = useState({
-    name: '',
-    guestCount: '',
-    attending: '',
+    name: "",
+    guestCount: "",
+    attending: "",
     drinks: [] as string[],
-    customDrink: '',
-    comment: '',
+    customDrink: "",
+    comment: "",
   });
 
   /**
@@ -103,11 +109,11 @@ const RSVPSection = () => {
    * @param checked - Новое состояние чекбокса
    */
   const handleDrinkChange = (drinkId: string, checked: boolean) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      drinks: checked 
-        ? [...prev.drinks, drinkId]      // Добавляем в массив
-        : prev.drinks.filter(d => d !== drinkId)  // Убираем из массива
+      drinks: checked
+        ? [...prev.drinks, drinkId] // Добавляем в массив
+        : prev.drinks.filter((d) => d !== drinkId), // Убираем из массива
     }));
   };
 
@@ -127,27 +133,33 @@ const RSVPSection = () => {
       return;
     }
 
-    const guestPayload: GuestResponsePayload = {
-      name: formData.name,
-      guestCount: formData.guestCount || '1',
-      attending: formData.attending as 'yes' | 'no',
-      drinks: formData.drinks,
-      customDrink: formData.customDrink.trim(),
+    const guestCount = formData.guestCount?.trim() || "1";
+
+    const payload: GuestResponsePayload = {
+      name: formData.name.trim(),
+      guestCount,
+      attending: formData.attending as "yes" | "no",
+      drinks: formData.attending === "yes" ? formData.drinks : [],
+      customDrink:
+        formData.attending === "yes" && formData.drinks.includes("custom")
+          ? formData.customDrink.trim()
+          : "",
       comment: formData.comment.trim(),
     };
 
-    // Добавляем гостя через контекст (сохраняется в localStorage)
-    addGuest(guestPayload);
+    // 1) сохраняем локально (localStorage через контекст)
+    addGuest(payload);
 
-    // Показываем сообщение об успехе (локально данные сохранены)
+    // 2) UI-успех сразу (локально уже сохранено)
     setIsSubmitted(true);
     toast({
       title: "Спасибо!",
       description: "Ваш ответ сохранён ✨",
     });
 
+    // 3) пробуем отправить на сервер
     try {
-      await saveGuestResponse(guestPayload);
+      await saveGuestResponse(payload);
     } catch (error) {
       console.error(error);
       toast({
@@ -171,7 +183,9 @@ const RSVPSection = () => {
           </h2>
         </div>
         <p className="text-center text-muted-foreground mb-8">
-          Пожалуйста, заполните анкету<br />до 1 мая
+          Пожалуйста, заполните анкету
+          <br />
+          до 1 мая
         </p>
 
         {/* ═══════════════════════════════════════════════════════════ */}
@@ -184,8 +198,13 @@ const RSVPSection = () => {
               /* СОСТОЯНИЕ: ФОРМА ОТПРАВЛЕНА */
               /* ═══════════════════════════════════════════════════════ */
               <div className="flex flex-col items-center justify-center py-16 animate-in fade-in zoom-in duration-500">
-                <Check className="w-24 h-24 text-green-500 mb-6" strokeWidth={3} />
-                <h3 className="text-2xl font-bold text-foreground mb-2">Спасибо!</h3>
+                <Check
+                  className="w-24 h-24 text-green-500 mb-6"
+                  strokeWidth={3}
+                />
+                <h3 className="text-2xl font-bold text-foreground mb-2">
+                  Спасибо!
+                </h3>
                 <p className="text-muted-foreground text-center">
                   Ваш ответ успешно отправлен ✨
                 </p>
@@ -195,7 +214,6 @@ const RSVPSection = () => {
               /* СОСТОЯНИЕ: ФОРМА ДЛЯ ЗАПОЛНЕНИЯ */
               /* ═══════════════════════════════════════════════════════ */
               <form onSubmit={handleSubmit} className="space-y-6">
-                
                 {/* ─────────────────────────────────────────────────── */}
                 {/* ПОЛЕ: ИМЯ */}
                 {/* ─────────────────────────────────────────────────── */}
@@ -206,7 +224,9 @@ const RSVPSection = () => {
                   <Input
                     type="text"
                     value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, name: e.target.value })
+                    }
                     placeholder="Введите ваше имя"
                     required
                     className="bg-background/50"
@@ -222,7 +242,9 @@ const RSVPSection = () => {
                   </label>
                   <Select
                     value={formData.guestCount}
-                    onValueChange={(value) => setFormData({ ...formData, guestCount: value })}
+                    onValueChange={(value) =>
+                      setFormData({ ...formData, guestCount: value })
+                    }
                   >
                     <SelectTrigger className="bg-background/50">
                       <SelectValue placeholder="Выберите количество" />
@@ -248,16 +270,20 @@ const RSVPSection = () => {
                   <div className="flex gap-4">
                     <Button
                       type="button"
-                      variant={formData.attending === 'yes' ? 'default' : 'outline'}
-                      onClick={() => setFormData({ ...formData, attending: 'yes' })}
+                      variant={formData.attending === "yes" ? "default" : "outline"}
+                      onClick={() =>
+                        setFormData({ ...formData, attending: "yes" })
+                      }
                       className="flex-1"
                     >
                       Да, приду 🎉
                     </Button>
                     <Button
                       type="button"
-                      variant={formData.attending === 'no' ? 'default' : 'outline'}
-                      onClick={() => setFormData({ ...formData, attending: 'no' })}
+                      variant={formData.attending === "no" ? "default" : "outline"}
+                      onClick={() =>
+                        setFormData({ ...formData, attending: "no" })
+                      }
                       className="flex-1"
                     >
                       Не смогу
@@ -266,9 +292,9 @@ const RSVPSection = () => {
                 </div>
 
                 {/* ─────────────────────────────────────────────────── */}
-                {/* ПОЛЕ: НАПИТКИ (показывается только если attending = 'yes') */}
+                {/* ПОЛЕ: НАПИТКИ (только если attending = 'yes') */}
                 {/* ─────────────────────────────────────────────────── */}
-                {formData.attending === 'yes' && (
+                {formData.attending === "yes" && (
                   <div className="animate-in fade-in slide-in-from-top-2 duration-300">
                     <label className="block text-sm font-medium text-foreground mb-3">
                       Предпочтения по напиткам 🍹
@@ -276,7 +302,7 @@ const RSVPSection = () => {
                     <p className="text-xs text-muted-foreground mb-3">
                       Можно выбрать несколько вариантов
                     </p>
-                    
+
                     <div className="space-y-3">
                       {/* Стандартные варианты напитков */}
                       {drinkOptions.map((drink) => (
@@ -284,7 +310,9 @@ const RSVPSection = () => {
                           <Checkbox
                             id={drink.id}
                             checked={formData.drinks.includes(drink.id)}
-                            onCheckedChange={(checked) => handleDrinkChange(drink.id, checked as boolean)}
+                            onCheckedChange={(checked) =>
+                              handleDrinkChange(drink.id, checked as boolean)
+                            }
                           />
                           <label
                             htmlFor={drink.id}
@@ -294,13 +322,15 @@ const RSVPSection = () => {
                           </label>
                         </div>
                       ))}
-                      
+
                       {/* Свой вариант напитка */}
                       <div className="flex items-start space-x-3 pt-2">
                         <Checkbox
                           id="custom-drink"
-                          checked={formData.drinks.includes('custom')}
-                          onCheckedChange={(checked) => handleDrinkChange('custom', checked as boolean)}
+                          checked={formData.drinks.includes("custom")}
+                          onCheckedChange={(checked) =>
+                            handleDrinkChange("custom", checked as boolean)
+                          }
                         />
                         <div className="flex-1">
                           <label
@@ -309,12 +339,17 @@ const RSVPSection = () => {
                           >
                             Другое (вписать своё) ✏️
                           </label>
-                          {/* Текстовое поле появляется при выборе "Другое" */}
-                          {formData.drinks.includes('custom') && (
+
+                          {formData.drinks.includes("custom") && (
                             <Input
                               type="text"
                               value={formData.customDrink}
-                              onChange={(e) => setFormData({ ...formData, customDrink: e.target.value })}
+                              onChange={(e) =>
+                                setFormData({
+                                  ...formData,
+                                  customDrink: e.target.value,
+                                })
+                              }
                               placeholder="Напишите ваш вариант"
                               className="bg-background/50 mt-2"
                             />
@@ -334,7 +369,9 @@ const RSVPSection = () => {
                   </label>
                   <Textarea
                     value={formData.comment}
-                    onChange={(e) => setFormData({ ...formData, comment: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, comment: e.target.value })
+                    }
                     placeholder="Дополнительная информация..."
                     className="bg-background/50"
                     rows={3}
