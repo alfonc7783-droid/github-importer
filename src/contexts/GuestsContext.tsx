@@ -56,6 +56,9 @@ interface Guest {
   name: string;
   guestCount: string;
   attending: 'yes' | 'no';
+  drinks: string[];
+  customDrink: string;
+  comment: string;
 }
 
 /**
