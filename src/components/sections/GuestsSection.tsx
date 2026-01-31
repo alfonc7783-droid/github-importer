@@ -30,6 +30,20 @@ import { useGuests } from '@/contexts/GuestsContext';
 import { Card, CardContent } from '@/components/ui/card';
 
 // ═══════════════════════════════════════════════════════════════════════════
+// СПРАВОЧНИКИ
+// ═══════════════════════════════════════════════════════════════════════════
+
+const drinkLabels: Record<string, string> = {
+  'red-wine': 'Вино красное 🍷',
+  'white-wine': 'Вино белое 🍾',
+  whiskey: 'Виски 🥃',
+  vodka: 'Водка 🍸',
+  champagne: 'Шампанское 🥂',
+  'non-alcoholic': 'Безалкогольное 🧃',
+  custom: 'Другое',
+};
+
+// ═══════════════════════════════════════════════════════════════════════════
 // ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ
 // ═══════════════════════════════════════════════════════════════════════════
 
@@ -51,6 +65,15 @@ const formatGuestCount = (count: string) => {
   if (num === 1) return '1 человек';
   if (num >= 2 && num <= 4) return `${num} человека`;
   return `${num} человек`;
+};
+
+const formatDrinks = (drinks: string[], customDrink: string) => {
+  if (!drinks.length) return '';
+  const labels = drinks.map((drink) => drinkLabels[drink] ?? drink);
+  if (drinks.includes('custom') && customDrink.trim()) {
+    return `${labels.filter((label) => label !== 'Другое').join(', ')}, Другое: ${customDrink.trim()}`;
+  }
+  return labels.join(', ');
 };
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -102,6 +125,16 @@ const GuestsSection = () => {
                       <p className="text-sm text-muted-foreground">
                         {formatGuestCount(guest.guestCount)}
                       </p>
+                      {guest.drinks.length > 0 && (
+                        <p className="text-sm text-muted-foreground mt-1">
+                          Напитки: {formatDrinks(guest.drinks, guest.customDrink)}
+                        </p>
+                      )}
+                      {guest.comment.trim() && (
+                        <p className="text-sm text-muted-foreground mt-1">
+                          Комментарий: {guest.comment.trim()}
+                        </p>
+                      )}
                     </div>
                   </CardContent>
                 </Card>
