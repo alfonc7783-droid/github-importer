@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { ChevronLeft, ChevronRight, Calendar, Heart } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Calendar, Heart, CalendarHeart } from 'lucide-react';
 import '@fontsource/marck-script';
 
 const WEDDING_DATE = new Date('2026-07-03T16:15:00');
@@ -51,11 +51,10 @@ const DateSection = () => {
       <div className="container mx-auto max-w-4xl">
         {/* Section title - outside the card */}
         <div className="flex items-center justify-center gap-3 mb-4">
-          <span className="text-2xl">✨</span>
+          <CalendarHeart className="w-8 h-8 text-primary" />
           <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground">
             Дата свадьбы
           </h2>
-          <span className="text-2xl">✨</span>
         </div>
         <p className="text-center text-muted-foreground mb-8">
           Отметьте этот день в своём календаре

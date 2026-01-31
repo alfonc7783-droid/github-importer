@@ -1,20 +1,33 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const navItems = [
-  { label: 'Главная', href: '/home', section: 'hero' },
-  { label: 'Детали', href: '/home#details', section: 'details' },
-  { label: 'Дата', href: '/home#date', section: 'date' },
-  { label: 'Анкета', href: '/home#rsvp', section: 'rsvp' },
-  { label: 'Гости', href: '/home#guests', section: 'guests' },
+  { label: 'Главная', section: 'hero' },
+  { label: 'Детали', section: 'details' },
+  { label: 'Дата', section: 'date' },
+  { label: 'Анкета', section: 'rsvp' },
+  { label: 'Гости', section: 'guests' },
 ];
 
 const Navigation = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   
   const handleNavClick = (section: string) => {
-    const element = document.getElementById(section);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    // If not on home page, navigate to home first
+    if (location.pathname !== '/home') {
+      navigate('/home');
+      // Wait for navigation, then scroll to section
+      setTimeout(() => {
+        const element = document.getElementById(section);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      const element = document.getElementById(section);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
