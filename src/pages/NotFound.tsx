@@ -1,20 +1,67 @@
+/**
+ * =============================================================================
+ * СТРАНИЦА 404 — НЕ НАЙДЕНО
+ * =============================================================================
+ * 
+ * Файл: src/pages/NotFound.tsx
+ * Описание: Отображается, когда пользователь переходит по несуществующему URL
+ * 
+ * ФУНКЦИОНАЛЬНОСТЬ:
+ * ─────────────────
+ * - Показывает сообщение об ошибке 404
+ * - Логирует ошибку в консоль для отладки
+ * - Предлагает ссылку для возврата на главную
+ * 
+ * @see src/App.tsx - Маршрут path="*" ведёт на эту страницу
+ */
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
+// ═══════════════════════════════════════════════════════════════════════════
+// КОМПОНЕНТ
+// ═══════════════════════════════════════════════════════════════════════════
+
+/**
+ * Страница ошибки 404
+ * Отображается при переходе на несуществующий маршрут
+ */
 const NotFound = () => {
   const location = useLocation();
 
+  /**
+   * Логирование ошибки при монтировании
+   * Помогает отслеживать неверные ссылки
+   */
   useEffect(() => {
-    console.error("404 Error: User attempted to access non-existent route:", location.pathname);
+    console.error("Ошибка 404: Пользователь перешёл по несуществующему адресу:", location.pathname);
   }, [location.pathname]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-muted">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">404</h1>
-        <p className="mb-4 text-xl text-muted-foreground">Oops! Page not found</p>
-        <a href="/" className="text-primary underline hover:text-primary/90">
-          Return to Home
+    <div className="flex min-h-screen items-center justify-center bg-background">
+      <div className="text-center px-4">
+        {/* ═══════════════════════════════════════════════════════════════ */}
+        {/* НОМЕР ОШИБКИ */}
+        {/* ═══════════════════════════════════════════════════════════════ */}
+        <h1 className="mb-4 text-6xl font-bold text-primary">404</h1>
+        
+        {/* ═══════════════════════════════════════════════════════════════ */}
+        {/* СООБЩЕНИЕ */}
+        {/* ═══════════════════════════════════════════════════════════════ */}
+        <p className="mb-2 text-xl text-foreground">
+          Упс! Страница не найдена
+        </p>
+        <p className="mb-6 text-muted-foreground">
+          Возможно, ссылка устарела или введён неверный адрес
+        </p>
+        
+        {/* ═══════════════════════════════════════════════════════════════ */}
+        {/* ССЫЛКА НА ГЛАВНУЮ */}
+        {/* ═══════════════════════════════════════════════════════════════ */}
+        <a 
+          href="/" 
+          className="inline-block px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
+        >
+          Вернуться на главную
         </a>
       </div>
     </div>
