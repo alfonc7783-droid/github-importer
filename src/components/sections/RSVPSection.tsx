@@ -133,7 +133,7 @@ const RSVPSection = () => {
       return;
     }
 
-    const guestCount = formData.guestCount?.trim() || "1";
+    const guestCount = (formData.guestCount?.trim() || "1") as "1" | "2" | "3" | "4" | "5" | "6" | "6+";
 
     const payload: GuestResponsePayload = {
       name: formData.name.trim(),
@@ -219,7 +219,7 @@ const RSVPSection = () => {
                 {/* ─────────────────────────────────────────────────── */}
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2">
-                    Ваше имя
+                    Ваше имя (для пары или семьи прописать все имена)
                   </label>
                   <Input
                     type="text"

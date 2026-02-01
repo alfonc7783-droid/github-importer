@@ -28,7 +28,7 @@
  * @see src/pages/Home.tsx - Родительский компонент
  * @see src/assets/homer-bride.gif - Анимация
  */
-import homerBride from '@/assets/homer-bride.gif';
+import homerBride from '@/assets/homer-bride-new.gif';
 import { ChevronDown } from 'lucide-react';
 import '@fontsource/marck-script';
 
