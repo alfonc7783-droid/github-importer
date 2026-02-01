@@ -26,6 +26,7 @@
  * /schedule   → Schedule   - Расписание дня
  * /dress-code → DressCode  - Дресс-код и палитра цветов
  * /gifts      → Gifts      - Информация о подарках
+ * /admin      → AdminExport - Скрытая админ-страница экспорта
  * *           → NotFound   - Страница 404
  * 
  * @see src/pages/ - Все страницы приложения
@@ -47,6 +48,7 @@ import Venue from "./pages/Venue";       // Место проведения
 import Schedule from "./pages/Schedule"; // Расписание дня
 import DressCode from "./pages/DressCode"; // Дресс-код
 import Gifts from "./pages/Gifts";       // Информация о подарках
+import AdminExport from "./pages/AdminExport"; // Скрытая админ-страница
 import NotFound from "./pages/NotFound"; // Страница 404
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -83,6 +85,7 @@ const App = () => (
             <Route path="/schedule" element={<Schedule />} />
             <Route path="/dress-code" element={<DressCode />} />
             <Route path="/gifts" element={<Gifts />} />
+            <Route path="/admin" element={<AdminExport />} />
             
             {/* ВАЖНО: Добавляйте новые маршруты ВЫШЕ этой строки */}
             <Route path="*" element={<NotFound />} />
