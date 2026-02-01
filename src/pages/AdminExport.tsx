@@ -65,7 +65,7 @@ const AdminExport = () => {
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
-      link.download = "rsvp-export.json";
+      link.download = "rsvp-export.csv";
       document.body.appendChild(link);
       link.click();
       link.remove();
@@ -108,7 +108,7 @@ const AdminExport = () => {
             </div>
 
             <Button type="button" className="w-full" disabled={!isReady} onClick={handleDownload}>
-              Скачать export JSON
+              Скачать export CSV
             </Button>
 
             {(status || error) && (
