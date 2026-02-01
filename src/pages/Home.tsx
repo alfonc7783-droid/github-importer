@@ -26,6 +26,7 @@
  * @see src/contexts/GuestsContext.tsx - Контекст гостей
  */
 import { useState, useEffect } from 'react';
+import { Send } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import DiscoBall from '@/components/DiscoBall';
 import MusicPlayer from '@/components/MusicPlayer';
@@ -77,6 +78,26 @@ const Home = () => {
       
       {/* Календарь и обратный отсчёт */}
       <DateSection />
+      
+      {/* ═══════════════════════════════════════════════════════════════ */}
+      {/* TELEGRAM-ГРУППА */}
+      {/* ═══════════════════════════════════════════════════════════════ */}
+      <section className="py-16 px-4">
+        <div className="flex flex-col items-center">
+          <a 
+            href="https://t.me/+Kk9Nr48YK1xjOWQy" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[#0088cc] hover:bg-[#006699] transition-colors shadow-lg mb-4"
+            aria-label="Присоединиться к Telegram группе"
+          >
+            <Send className="w-9 h-9 text-white" />
+          </a>
+          <p className="text-sm text-muted-foreground text-center">
+            Присоединяйтесь к нашему каналу
+          </p>
+        </div>
+      </section>
     </div>
   );
 };
