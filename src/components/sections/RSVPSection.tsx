@@ -365,7 +365,7 @@ const RSVPSection = () => {
                 {/* ─────────────────────────────────────────────────── */}
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2">
-                    Комментарий (опционально)
+                    Комментарий (если Вы семья или пара — здесь можете расписать, кто какие напитки предпочитает)
                   </label>
                   <Textarea
                     value={formData.comment}
