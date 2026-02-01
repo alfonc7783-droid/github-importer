@@ -44,8 +44,6 @@ const navItems = [
   { label: 'Главная', section: 'hero' },
   { label: 'Детали', section: 'details' },
   { label: 'Дата', section: 'date' },
-  { label: 'Анкета', section: 'rsvp' },
-  { label: 'Гости', section: 'guests' },
 ];
 
 // ═══════════════════════════════════════════════════════════════════════════
