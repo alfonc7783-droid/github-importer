@@ -70,6 +70,8 @@ const drinkOptions = [
   { id: "non-alcoholic", label: "Что-нибудь безалкогольное 🧃" },
 ];
 
+const allowedGuestCounts = ["1", "2", "3", "4", "5", "6", "6+"] as const;
+
 // ═══════════════════════════════════════════════════════════════════════════
 // КОМПОНЕНТ
 // ═══════════════════════════════════════════════════════════════════════════
@@ -124,6 +126,16 @@ const RSVPSection = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    const name = formData.name.trim();
+    if (!name) {
+      toast({
+        title: "Введите имя",
+        description: "Имя не должно быть пустым или состоять только из пробелов.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     if (!formData.attending) {
       toast({
         title: "Уточните ответ",
@@ -133,10 +145,19 @@ const RSVPSection = () => {
       return;
     }
 
-    const guestCount = (formData.guestCount?.trim() || "1") as "1" | "2" | "3" | "4" | "5" | "6" | "6+";
+    const rawGuestCount = formData.guestCount?.trim() || "1";
+    if (!allowedGuestCounts.includes(rawGuestCount as (typeof allowedGuestCounts)[number])) {
+      toast({
+        title: "Проверьте количество гостей",
+        description: "Выберите допустимое количество гостей из списка.",
+        variant: "destructive",
+      });
+      return;
+    }
+    const guestCount = rawGuestCount as "1" | "2" | "3" | "4" | "5" | "6" | "6+";
 
     const payload: GuestResponsePayload = {
-      name: formData.name.trim(),
+      name,
       guestCount,
       attending: formData.attending as "yes" | "no",
       drinks: formData.attending === "yes" ? formData.drinks : [],
