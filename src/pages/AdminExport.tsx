@@ -44,7 +44,8 @@ const AdminExport = () => {
     try {
       const response = await fetch("/api/rsvp/export", {
         headers: {
-          Authorization: `Bearer ${token.trim()}`,
+          // nginx BasicAuth consumes Authorization, so export token is sent via custom header.
+          "X-Export-Token": token.trim(),
         },
       });
 
