@@ -44,6 +44,7 @@ const navItems = [
   { label: 'Главная', section: 'hero' },
   { label: 'Детали', section: 'details' },
   { label: 'Дата', section: 'date' },
+  { label: 'Телеграм', section: 'telegram' },
 ];
 
 // ═══════════════════════════════════════════════════════════════════════════
