@@ -85,8 +85,8 @@ const Home = () => {
       <section id="telegram" className="py-20 px-4">
         <div className="flex flex-col items-center">
           <a 
-            href="https://t.me/+Kk9Nr48YK1xjOWQy" 
-            target="_blank" 
+            href="https://t.me/+X_wcc7_mOdI4Y2My" 
+            target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[#0088cc] hover:bg-[#006699] transition-colors shadow-lg mb-4"
             aria-label="Присоединиться к Telegram каналу"
