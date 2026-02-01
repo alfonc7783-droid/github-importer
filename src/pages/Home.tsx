@@ -82,19 +82,19 @@ const Home = () => {
       {/* ═══════════════════════════════════════════════════════════════ */}
       {/* TELEGRAM-ГРУППА */}
       {/* ═══════════════════════════════════════════════════════════════ */}
-      <section className="py-16 px-4">
+      <section id="telegram" className="py-20 px-4">
         <div className="flex flex-col items-center">
           <a 
             href="https://t.me/+Kk9Nr48YK1xjOWQy" 
             target="_blank" 
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[#0088cc] hover:bg-[#006699] transition-colors shadow-lg mb-4"
-            aria-label="Присоединиться к Telegram группе"
+            aria-label="Присоединиться к Telegram каналу"
           >
             <Send className="w-9 h-9 text-white" />
           </a>
-          <p className="text-sm text-muted-foreground text-center">
-            Присоединяйтесь к нашему каналу
+          <p className="text-muted-foreground text-center max-w-sm">
+            Присоединяйтесь к нашему каналу в Телеграм, где вы сможете задавать нам свои вопросы
           </p>
         </div>
       </section>
