@@ -32,7 +32,6 @@
  * 
  * @see src/pages/Home.tsx - Используется на главной странице
  */
-import { useEffect, useState } from 'react';
 import discoBallGif from '@/assets/disco-ball.gif';
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -40,35 +39,16 @@ import discoBallGif from '@/assets/disco-ball.gif';
 // ═══════════════════════════════════════════════════════════════════════════
 
 /**
- * Диско-шар с эффектом параллакса
- * Декоративный элемент, создающий атмосферу праздника
+ * Диско-шар — фиксированный декоративный элемент
+ * Всегда остаётся вверху страницы
  */
 const DiscoBall = () => {
-  /**
-   * Текущая позиция скролла
-   * Используется для расчёта параллакс-эффекта
-   */
-  const [scrollY, setScrollY] = useState(0);
-
-  /**
-   * Подписка на событие прокрутки
-   * Обновляет scrollY при каждом скролле
-   */
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
     <div 
       className="fixed left-1/2 -translate-x-1/2 z-40 pointer-events-none"
       style={{ 
-        // Параллакс: шар опускается при скролле (макс. 100px)
-        top: `${Math.min(scrollY * 0.3, 100) - 40}px`,
+        // Фиксированная позиция вверху
+        top: '-40px',
       }}
     >
       {/* ═══════════════════════════════════════════════════════════════ */}
