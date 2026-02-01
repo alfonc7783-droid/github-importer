@@ -25,6 +25,7 @@
  * @see src/components/sections/ - Все секции страницы
  * @see src/contexts/GuestsContext.tsx - Контекст гостей
  */
+import { useState, useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import DiscoBall from '@/components/DiscoBall';
 import MusicPlayer from '@/components/MusicPlayer';
@@ -36,6 +37,18 @@ import GuestsSection from '@/components/sections/GuestsSection';
 import { GuestsProvider } from '@/contexts/GuestsContext';
 
 const Home = () => {
+  /**
+   * Состояние для плавного появления страницы
+   * При монтировании компонента запускается fade-in анимация
+   */
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    // Небольшая задержка для запуска анимации появления
+    const timer = setTimeout(() => setIsVisible(true), 50);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     /**
      * GuestsProvider оборачивает всю страницу, чтобы:
@@ -43,7 +56,11 @@ const Home = () => {
      * - GuestsSection мог отображать список гостей
      */
     <GuestsProvider>
-      <div className="min-h-screen bg-background">
+      <div 
+        className={`min-h-screen bg-background transition-opacity duration-700 ease-out ${
+          isVisible ? 'opacity-100' : 'opacity-0'
+        }`}
+      >
         {/* ═══════════════════════════════════════════════════════════════ */}
         {/* ГЛОБАЛЬНЫЕ КОМПОНЕНТЫ */}
         {/* ═══════════════════════════════════════════════════════════════ */}
