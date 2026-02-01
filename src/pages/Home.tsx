@@ -32,9 +32,6 @@ import MusicPlayer from '@/components/MusicPlayer';
 import HeroSection from '@/components/sections/HeroSection';
 import DetailsSection from '@/components/sections/DetailsSection';
 import DateSection from '@/components/sections/DateSection';
-import RSVPSection from '@/components/sections/RSVPSection';
-import GuestsSection from '@/components/sections/GuestsSection';
-import { GuestsProvider } from '@/contexts/GuestsContext';
 
 const Home = () => {
   /**
@@ -50,50 +47,37 @@ const Home = () => {
   }, []);
 
   return (
-    /**
-     * GuestsProvider оборачивает всю страницу, чтобы:
-     * - RSVPSection мог добавлять гостей
-     * - GuestsSection мог отображать список гостей
-     */
-    <GuestsProvider>
-      <div 
-        className={`min-h-screen bg-background transition-opacity duration-700 ease-out ${
-          isVisible ? 'opacity-100' : 'opacity-0'
-        }`}
-      >
-        {/* ═══════════════════════════════════════════════════════════════ */}
-        {/* ГЛОБАЛЬНЫЕ КОМПОНЕНТЫ */}
-        {/* ═══════════════════════════════════════════════════════════════ */}
-        
-        {/* Навигационное меню (фиксированное сверху) */}
-        <Navigation />
-        
-        {/* Декоративный диско-шар (параллакс при прокрутке) */}
-        <DiscoBall />
-        
-        {/* Кнопка управления музыкой (фиксированная снизу справа) */}
-        <MusicPlayer />
-        
-        {/* ═══════════════════════════════════════════════════════════════ */}
-        {/* СЕКЦИИ СТРАНИЦЫ */}
-        {/* ═══════════════════════════════════════════════════════════════ */}
-        
-        {/* Главный экран: имена и дата */}
-        <HeroSection />
-        
-        {/* Карточки с деталями мероприятия */}
-        <DetailsSection />
-        
-        {/* Календарь и обратный отсчёт */}
-        <DateSection />
-        
-        {/* Анкета подтверждения участия (RSVP) */}
-        <RSVPSection />
-        
-        {/* Список гостей и Telegram-группа */}
-        <GuestsSection />
-      </div>
-    </GuestsProvider>
+    <div 
+      className={`min-h-screen bg-background transition-opacity duration-700 ease-out ${
+        isVisible ? 'opacity-100' : 'opacity-0'
+      }`}
+    >
+      {/* ═══════════════════════════════════════════════════════════════ */}
+      {/* ГЛОБАЛЬНЫЕ КОМПОНЕНТЫ */}
+      {/* ═══════════════════════════════════════════════════════════════ */}
+      
+      {/* Навигационное меню (фиксированное сверху) */}
+      <Navigation />
+      
+      {/* Декоративный диско-шар (фиксированный сверху) */}
+      <DiscoBall />
+      
+      {/* Кнопка управления музыкой (фиксированная снизу справа) */}
+      <MusicPlayer />
+      
+      {/* ═══════════════════════════════════════════════════════════════ */}
+      {/* СЕКЦИИ СТРАНИЦЫ */}
+      {/* ═══════════════════════════════════════════════════════════════ */}
+      
+      {/* Главный экран: имена и дата */}
+      <HeroSection />
+      
+      {/* Карточки с деталями мероприятия */}
+      <DetailsSection />
+      
+      {/* Календарь и обратный отсчёт */}
+      <DateSection />
+    </div>
   );
 };
 
