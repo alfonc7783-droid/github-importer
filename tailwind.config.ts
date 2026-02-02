@@ -31,6 +31,7 @@
  * @see src/index.css - CSS-переменные с цветами
  */
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
   /**
@@ -199,5 +200,5 @@ export default {
    * ПЛАГИНЫ
    * tailwindcss-animate — дополнительные утилиты для анимаций
    */
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindcssAnimate],
 } satisfies Config;
