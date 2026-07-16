@@ -1,6 +1,6 @@
 # 💍 Свадебное приглашение — Алексей и Мария
 
-![CI](https://github.com/alfonc7783-droid/github-importer/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/alfonc7783-droid/wedding-invitation-site/actions/workflows/ci.yml/badge.svg)
 
 Интерактивное свадебное приглашение с анимациями, музыкой и формой RSVP.
 
